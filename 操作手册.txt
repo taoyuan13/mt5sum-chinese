@@ -1,0 +1,47 @@
+python解释器	/root/miniconda3/bin/python
+
+pip install tensorboardX pyrouge transformers jieba emoji flask flask_limiter
+
+cpan install XML::DOM
+python /root/miniconda3/bin/pyrouge_set_rouge_path  /root/pycharm/pyrouge-master/tools/ROUGE-1.5.5
+chmod 777 /root/pycharm/pyrouge-master/tools/ROUGE-1.5.5/ROUGE-1.5.5.pl
+
+# 去掉日志中的Processing ***.txt
+mousepad /root/miniconda3/lib/python3.8/site-packages/pyrouge/utils/file_utils.py
+
+linux
+# 拉取rabbitmq镜像
+docker pull rabbitmq:management
+# 运行RabbitMQ容器
+docker run -d --hostname my-rabbit --name rabbitmq -p 15672:15672 -p 5672:5672 rabbitmq:management
+# qi dong
+docker start rabbitmq
+
+windows
+# 查看rabbitmq状态
+rabbitmqctl status
+# 启动rabbitmq
+rabbitmq-server.bat
+# 安装windows服务
+rabbitmq-service.bat install
+
+# 使用nameko框架的run命令启动微服务
+cd src
+nameko run data_service --broker amqp://guest:guest@127.0.0.1
+nameko run summary_service --broker amqp://guest:guest@127.0.0.1
+
+# 启动app
+python app.py
+
+# 启动gunicorn，前一个app是文件名，后一个app是实例名
+gunicorn -c guni-cfg.py app:app
+
+
+multiprocess==0.70.12
+numpy==1.20.1
+pyrouge==0.1.3
+transformers==4.12.3
+tensorboardX==2.4
+pytorch==1.8.0
+jieba==0.42.1
+emoji==1.6.1
